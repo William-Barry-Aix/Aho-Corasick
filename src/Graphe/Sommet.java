@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 public class Sommet {
+    private static Sommet racine;
     private static int nbrSommets = 0;
     private boolean etat;
     private int valeur;
