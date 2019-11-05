@@ -12,6 +12,9 @@ public class Sommet {
     private HashMap<Character, Sommet> arcs;
 
     public Sommet(){
+        if (Sommet.racine == null){
+            Sommet.racine = this;
+        }
         this.valeur = nbrSommets++;
         arcs = new HashMap<Character, Sommet>();
     }
