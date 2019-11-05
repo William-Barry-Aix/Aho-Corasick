@@ -45,4 +45,37 @@ public class Sommet {
         return str;
     }
 
+    /**
+     * Trouve le mot donné dans ses arcs
+     * @param mot
+     * @return
+     */
+    public Sommet recherche(String mot) {
+        Sommet trouve = null;
+        if (this.arcs.containsKey(mot.charAt(0))){
+            trouve = this.arcs.get(mot.charAt(0)).rechercheSufixe(mot.substring(1), 0);
+        }
+        return trouve;
+    }
+
+    /**
+     * Parcour les arcs à partir d'un sufixe
+     * @param mot
+     * @param position
+     * @return
+     */
+    private Sommet rechercheSufixe(String mot, int position) {
+        Sommet trouve = null;
+        if (mot.length() <= position){
+            return this;
+        }
+        if (this.arcs.containsKey(mot.charAt(position))){
+            trouve = this.arcs.get(mot.charAt(position)).rechercheSufixe(mot, position + 1);
+        } else if (mot.length() <= position+1){
+            trouve = Sommet.racine.recherche(mot);
+        }
+        return trouve;
+    }
+
+
 }
