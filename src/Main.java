@@ -34,6 +34,6 @@ public class Main {
             racine.ajoutMulti(mot);
         }
         System.out.println(racine);
-
+        System.out.println(racine.recherche("CARTABLE"));
     }
 }
