@@ -114,6 +114,13 @@ public class Sommet {
         }
         if (this.arcs.containsKey(mot.charAt(position))){
             trouve = this.arcs.get(mot.charAt(position)).rechercheSufixe(mot, position + 1);
+        } else {
+            if (mot.length() > 0){
+                // TODO: ajouter une méthode de recherche de transition
+                System.out.println("shit");
+                System.out.println(mot);
+                trouve = Sommet.racine.recherche(mot);
+            }
         }
         return trouve;
     }
