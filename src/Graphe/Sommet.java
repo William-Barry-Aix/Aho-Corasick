@@ -42,6 +42,10 @@ public class Sommet {
         return arc;
     }
 
+    /**
+     * Methode d'entrée pour l'appel récurcif d'ajout de mot
+     * @param mot
+     */
     public void ajoutMulti(String mot){
         if (mot.length() <= 1){
             ajouter(mot.charAt(0));
