@@ -16,7 +16,7 @@ public class Sommet {
      *
      */
     public Sommet(){
-        // Définit la racine si ce sommet est le premier à être instencié
+        // Définit la racine si ce sommet est le premier à être instancié
         if (Sommet.racine == null){
             Sommet.racine = this;
         }
