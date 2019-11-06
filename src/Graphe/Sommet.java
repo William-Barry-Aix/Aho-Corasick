@@ -49,6 +49,12 @@ public class Sommet {
     public void ajoutMulti(String mot){
         ajoutMulti(mot, "");
     }
+
+    /**
+     * Méthode récurcive qui créé les arcs jusqu'au mot à ajouter
+     * @param mot
+     * @param prefix
+     */
         if (mot.length() <= 1){
             ajouter(mot.charAt(0));
         } else {
