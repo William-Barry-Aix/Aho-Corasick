@@ -10,6 +10,7 @@ public class Sommet {
     private int valeur;
 
     private HashMap<Character, Sommet> arcs;
+    private String mot;
 
     public Sommet(){
         if (Sommet.racine == null){
