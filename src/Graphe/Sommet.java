@@ -24,12 +24,22 @@ public class Sommet {
         this.valeur = nbrSommets++;
         arcs = new HashMap<Character, Sommet>();
     }
-    //TODO: Prendre en compte les echec
-    public void ajouter(Character lettre){
+
+    /**
+     * Ajoute une lettre à la liste d'arc du sommet
+     * @param lettre
+     * @return le nouvel arc
+     */
+    public Sommet ajouter(Character lettre){
+        Sommet arc = null;
+        //vérife que la lettre n'existe pas déjà
         if(!this.arcs.containsKey(lettre)){
-            arcs.put(lettre,new Sommet());
-            
+            arc = new Sommet();
+            arcs.put(lettre, arc);
+        } else {
+            arc = arcs.get(lettre);
         }
+        return arc;
     }
 
     public void ajoutMulti(String mot){
