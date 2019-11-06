@@ -107,6 +107,9 @@ public class Sommet {
         if (!this.mot.equals("")) {
             System.out.println(this.mot);
         }
+        // termine la recherche en retournant le dernier mot
+        if (mot.length() == position){
+            System.out.println("tout le mot a été parcourus !!!");
             return this;
         }
         if (this.arcs.containsKey(mot.charAt(position))){
