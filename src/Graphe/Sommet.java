@@ -114,8 +114,6 @@ public class Sommet {
         }
         if (this.arcs.containsKey(mot.charAt(position))){
             trouve = this.arcs.get(mot.charAt(position)).rechercheSufixe(mot, position + 1);
-        } else if (mot.length() <= position+1){
-            trouve = Sommet.racine.recherche(mot);
         }
         return trouve;
     }
