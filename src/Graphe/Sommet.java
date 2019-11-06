@@ -91,6 +91,8 @@ public class Sommet {
         }
         if (this.arcs.containsKey(mot.charAt(0))){
             trouve = this.arcs.get(mot.charAt(0)).rechercheSufixe(mot.substring(1), 0);
+        } else {
+            trouve = Sommet.racine.recherche(mot.substring(1));
         }
         return trouve;
     }
@@ -105,20 +107,20 @@ public class Sommet {
         Sommet trouve = null;
         // si le sommet est le dernier d'un mot, afficher ce mot
         if (!this.mot.equals("")) {
-            System.out.println(this.mot);
+            System.out.println("Trouvé: "+this.mot);
         }
         // termine la recherche en retournant le dernier mot
         if (mot.length() == position){
-            System.out.println("tout le mot a été parcourus !!!");
+            // Cherche les paternes
+            if (this.mot.length() > 1){
+                Sommet.racine.rechercheSufixe(this.mot.substring(1),0);
+            }
             return this;
         }
         if (this.arcs.containsKey(mot.charAt(position))){
             trouve = this.arcs.get(mot.charAt(position)).rechercheSufixe(mot, position + 1);
         } else {
             if (mot.length() > 0){
-                // TODO: ajouter une méthode de recherche de transition
-                System.out.println("shit");
-                System.out.println(mot);
                 trouve = Sommet.racine.recherche(mot);
             }
         }
