@@ -12,10 +12,15 @@ public class Sommet {
     private HashMap<Character, Sommet> arcs;
     private String mot;
 
+    /**
+     *
+     */
     public Sommet(){
+        // Définit la racine si ce sommet est le premier à être instencié
         if (Sommet.racine == null){
             Sommet.racine = this;
         }
+        this.mot = "";
         this.valeur = nbrSommets++;
         arcs = new HashMap<Character, Sommet>();
     }
