@@ -17,10 +17,12 @@ public class Main {
     public static void main(String[] args) {
         Main.MOTS.add("Cane");
         Main.MOTS.add("Ane");
+        Main.MOTS.add("A");
         Main.MOTS.add("CaRTe");
         Main.MOTS.add("AnDeS");
         Main.MOTS.add("TENIr");
         Main.MOTS.add("CARtaBLE");
+        Main.MOTS.add("CARtaB");
         Main.MOTS.add("TAblEaU");
         Main.MOTS.add("AS");
         Main.MOTS.add("ArTe");
@@ -34,6 +36,7 @@ public class Main {
             racine.ajoutMulti(mot);
         }
         System.out.println(racine);
-        System.out.println(racine.recherche("CARTABLE"));
+        System.out.println(racine.recherche("CARTABLEAU"));
+        System.out.println(racine.recherche("CANE"));
     }
 }
