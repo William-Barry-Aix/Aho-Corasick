@@ -80,6 +80,10 @@ public class Sommet {
      */
     public Sommet recherche(String mot) {
         Sommet trouve = null;
+        if (mot.length() <= 0){
+            System.out.println("tout le mot n'a pas été parcourus :'(");
+            return null;
+        }
         if (this.arcs.containsKey(mot.charAt(0))){
             trouve = this.arcs.get(mot.charAt(0)).rechercheSufixe(mot.substring(1), 0);
         }
