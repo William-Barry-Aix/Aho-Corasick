@@ -103,7 +103,10 @@ public class Sommet {
      */
     private Sommet rechercheSufixe(String mot, int position) {
         Sommet trouve = null;
-        if (mot.length() <= position){
+        // si le sommet est le dernier d'un mot, afficher ce mot
+        if (!this.mot.equals("")) {
+            System.out.println(this.mot);
+        }
             return this;
         }
         if (this.arcs.containsKey(mot.charAt(position))){
