@@ -55,6 +55,9 @@ public class Sommet {
      * @param mot
      * @param prefix
      */
+    private void ajoutMulti(String mot, String prefix){
+        // mise à jour du préfixe à ajouter au sommet de la fin du mot
+        prefix += mot.charAt(0);
         if (mot.length() <= 1){
             ajouter(mot.charAt(0));
         } else {
