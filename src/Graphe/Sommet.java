@@ -47,6 +47,8 @@ public class Sommet {
      * @param mot
      */
     public void ajoutMulti(String mot){
+        ajoutMulti(mot, "");
+    }
         if (mot.length() <= 1){
             ajouter(mot.charAt(0));
         } else {
