@@ -58,13 +58,15 @@ public class Sommet {
     private void ajoutMulti(String mot, String prefix){
         // mise à jour du préfixe à ajouter au sommet de la fin du mot
         prefix += mot.charAt(0);
+        // ajoute un sommet s'il n'éxiste pas
+        Sommet sommet = ajouter(mot.charAt(0));
+        // si c'est le dernier caractère du mot, fixe le mot du sommet
         if (mot.length() <= 1){
-            ajouter(mot.charAt(0));
-        } else {
-            if(!this.arcs.containsKey(mot.charAt(0))) {
-                this.arcs.put(mot.charAt(0), new Sommet());
-            }
-            arcs.get(mot.charAt(0)).ajoutMulti(mot.substring(1));
+            sommet.mot = prefix;
+        }
+        else {
+            // l'ajout récurcif continue en enlevant la première lettre du mot
+            sommet.ajoutMulti(mot.substring(1), prefix);
         }
     }
 
