@@ -6,11 +6,11 @@ import java.util.Map.Entry;
 public class Sommet {
     private static Sommet racine;
     private static int nbrSommets = 0;
-    private boolean etat;
+    private boolean visite;
     private int valeur;
 
     private HashMap<Character, Sommet> arcs;
-    private String mot;
+    private String prefixe;
 
     /**
      *
@@ -20,7 +20,8 @@ public class Sommet {
         if (Sommet.racine == null){
             Sommet.racine = this;
         }
-        this.mot = "";
+        this.visite = false;
+        this.prefixe = "";
         this.valeur = nbrSommets++;
         arcs = new HashMap<Character, Sommet>();
     }
@@ -43,7 +44,7 @@ public class Sommet {
     }
 
     /**
-     * Methode d'entrée pour l'appel récurcif d'ajout de mot
+     * Methode d'entrée pour l'appel récurcif d'ajout de prefixe
      * @param mot
      */
     public void ajoutMulti(String mot){
@@ -51,21 +52,21 @@ public class Sommet {
     }
 
     /**
-     * Méthode récurcive qui créé les arcs jusqu'au mot à ajouter
+     * Méthode récurcive qui créé les arcs jusqu'au prefixe à ajouter
      * @param mot
      * @param prefix
      */
     private void ajoutMulti(String mot, String prefix){
-        // mise à jour du préfixe à ajouter au sommet de la fin du mot
+        // mise à jour du préfixe à ajouter au sommet de la fin du prefixe
         prefix += mot.charAt(0);
         // ajoute un sommet s'il n'éxiste pas
         Sommet sommet = ajouter(mot.charAt(0));
-        // si c'est le dernier caractère du mot, fixe le mot du sommet
+        // si c'est le dernier caractère du prefixe, fixe le prefixe du sommet
         if (mot.length() <= 1){
-            sommet.mot = prefix;
+            sommet.prefixe = prefix;
         }
         else {
-            // l'ajout récurcif continue en enlevant la première lettre du mot
+            // l'ajout récurcif continue en enlevant la première lettre du prefixe
             sommet.ajoutMulti(mot.substring(1), prefix);
         }
     }
@@ -79,14 +80,14 @@ public class Sommet {
     }
 
     /**
-     * Trouve le mot donné dans ses arcs
+     * Trouve le prefixe donné dans ses arcs
      * @param mot
      * @return
      */
     public Sommet recherche(String mot) {
         Sommet trouve = null;
         if (mot.length() <= 0){
-            System.out.println("tout le mot n'a pas été parcourus :'(");
+            System.out.println("tout le prefixe n'a pas été parcourus :'(");
             return null;
         }
         if (this.arcs.containsKey(mot.charAt(0))){
@@ -97,6 +98,13 @@ public class Sommet {
         return trouve;
     }
 
+    private void affiche() {
+        if (!visite){
+            System.out.println("Trouvé: "+this.prefixe);
+            this.visite = true;
+        }
+    }
+
     /**
      * Parcour les arcs à partir d'un sufixe
      * @param mot
@@ -105,15 +113,15 @@ public class Sommet {
      */
     private Sommet rechercheSufixe(String mot, int position) {
         Sommet trouve = null;
-        // si le sommet est le dernier d'un mot, afficher ce mot
-        if (!this.mot.equals("")) {
-            System.out.println("Trouvé: "+this.mot);
+        // si le sommet est le dernier d'un prefixe, afficher ce prefixe
+        if (!this.prefixe.equals("")) {
+            this.affiche();
         }
-        // termine la recherche en retournant le dernier mot
+        // termine la recherche en retournant le dernier prefixe
         if (mot.length() == position){
             // Cherche les paternes
-            if (this.mot.length() > 1){
-                Sommet.racine.rechercheSufixe(this.mot.substring(1),0);
+            if (this.prefixe.length() > 1){
+                Sommet.racine.rechercheSufixe(this.prefixe.substring(1),0);
             }
             return this;
         }

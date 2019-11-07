@@ -26,6 +26,7 @@ public class Main {
         Main.MOTS.add("AS");
         Main.MOTS.add("ArTe");
         Main.MOTS.add("Rtt");
+        Main.MOTS.add("A");
         // Initialisation de la liste de mots
         Main.arranger();
         System.out.println(Main.MOTS);
@@ -36,6 +37,6 @@ public class Main {
         }
         System.out.println(racine);
         //System.out.println(racine.recherche("CARTABLEAU"));
-        System.out.println(racine.recherche("ZCARTENIR"));
+        System.out.println(racine.recherche("CARTABLE"));
     }
 }
