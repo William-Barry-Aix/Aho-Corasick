@@ -34,7 +34,7 @@ public class Sommet {
     public Sommet ajouter(Character lettre){
         Sommet arc = null;
         //vérife que la lettre n'existe pas déjà
-        if(!this.arcs.containsKey(lettre)){
+        if (!this.arcs.containsKey(lettre)){
             arc = new Sommet();
             arcs.put(lettre, arc);
         } else {
@@ -85,6 +85,7 @@ public class Sommet {
      * @return
      */
     public Sommet recherche(String mot) {
+        mot = mot.toUpperCase();
         Sommet trouve = null;
         if (mot.length() <= 0){
             System.out.println("tout le prefixe n'a pas été parcourus :'(");
