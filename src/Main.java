@@ -17,12 +17,17 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        String fichier = null;
 
         try {
-            File file = new File("source.txt");
+            System.out.println("veuillez sélectionner le nom du fichier dont vous voulez trouver le ou les mots souhaités : ");
+            Scanner s = new Scanner(System.in);
+            fichier = s.nextLine() + ".txt";
+
+            File file = new File(fichier);
             BufferedReader br = new BufferedReader(new FileReader(file));
             String st;
-            System.out.println("Chargement du fichier...");
+            System.out.println("Chargement du fichier "+ fichier);
             while ((st = br.readLine()) != null) {
                 st = st.replaceAll("[,?;.:/!()-]", " ");
                 for (String mot : st.toUpperCase().split(" ")) {
@@ -40,7 +45,7 @@ public class Main {
             recherche(racine);
 
         } catch (FileNotFoundException ex){
-            System.err.println("Un fichier \"source.txt\" doit se trouver dans le répertoire "+
+            System.err.println("Le fichier \""+fichier+"\" doit se trouver dans le répertoire "+
                     System.getProperty("user.dir"));
         } catch (IOException ex) {
             ex.printStackTrace();
